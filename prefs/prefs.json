@@ -1,0 +1,8 @@
+{
+  "input_folder": "input/",
+  "output_folder": "output/",
+  "db_cred_file": "prefs/db_cred.json",
+  "messeges_file": "prefs/messeges.json",
+  "qwerys_file": "prefs/qwerys.json",
+  "debug_mode": true
+}

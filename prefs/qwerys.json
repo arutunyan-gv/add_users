@@ -1,0 +1,7 @@
+{
+  "read_roles": "select name, role, com_qwery from tmp.bot_add_users",
+  "find_company_name": "select name from company where id = __arg__",
+  "find_type_user": "select comment from tmp.type_user where id = __arg__",
+  "find_pass": "\t-- Найти пользователя во временных таблицах\n    \t\t\twith cte as (\n    \t\t\tselect 'tmp.mzk_users' as table_name, email, name, pass as password, company as company from tmp.mzk_users\n    \t\t\tunion all\n    \t\t\tselect 'tmp.inu_user' as table_name, email, name, pass as password, company as company from tmp.inu_user\n    \t\t\tunion all\n    \t\t\tselect 'tmp.mbu_users' as table_name, email, user_name, password as password, district as company from tmp.mbu_users\n    \t\t\tunion all\n    \t\t\tselect 'tmp.new_state' as table_name, email, fio, password as password, department_name as company from tmp.new_state\n    \t\t\tunion all\n    \t\t\tselect 'tmp.all_users' as table_name, email, name, password as password, company as company from tmp.all_users\n    \t\t\t\t)\n    \t\t\tselect distinct password from cte\n    \t\t\twhere\n    \t\t\temail ilike '__arg__'",
+  "test_qwery": "select 1"
+}
